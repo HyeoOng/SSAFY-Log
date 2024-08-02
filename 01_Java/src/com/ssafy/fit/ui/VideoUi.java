@@ -1,6 +1,13 @@
+package com.ssafy.fit.ui;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+
+import com.ssafy.fit.model.Video;
+import com.ssafy.fit.model.VideoReview;
+import com.ssafy.fit.model.dao.VideoDaoImpl;
+import com.ssafy.fit.model.dao.VideoReviewDaoImpl;
+import com.ssafy.fit.util.SsafitUtil;
 
 public class VideoUi {
     private VideoDaoImpl videoDao = VideoDaoImpl.getInstance();
@@ -77,13 +84,8 @@ public class VideoUi {
             
             List<VideoReview> reviewList = videoReviewDao.selectReview(videoNo);
             
-            if(reviewList!=null) {
-            	for(int i=0; i<reviewList.size(); i++) {
-            		System.out.print(i + " ");
-            		System.out.println(reviewList.get(i).getContent());
-            	}
-                SsafitUtil.printLine();
-            }
+            videoReviewUi.listReview(videoNo);
+            
             videoReviewUi.service(videoNo);
             
         } else {

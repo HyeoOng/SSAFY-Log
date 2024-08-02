@@ -1,4 +1,7 @@
+package com.ssafy.fit.ui;
 import java.util.Scanner;
+
+import com.ssafy.fit.util.SsafitUtil;
 
 public class MainUi {
     private Scanner sc = new Scanner(System.in);
