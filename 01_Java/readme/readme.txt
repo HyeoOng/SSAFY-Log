@@ -22,7 +22,7 @@
 <br>
 
 ## 2. Feature
-#### 메인 화면
+#### 첫 화면
 <img src="./readme/main.png" width="60%"/>
 
 #### 기능
@@ -40,6 +40,7 @@
 #### 영상 리뷰 관리
 <img src="./readme/videoReview1.png" width="60%"/>
 <img src="./readme/videoReview2.png" width="60%"/>
+
 #### 영상 리뷰 삭제
 <img src="./readme/removeReview1.png" width="60%"/>
 <img src="./readme/removeReview2.png" width="60%"/>
@@ -53,7 +54,8 @@
 #### JSON 파일에서 데이터 로드 및 파싱
 
 제공되는 영상 정보 데이터 파일(video.json)을 기반으로 필요한 정보를 읽어와 StringBuilder를 이용해 문자열로 결합한 후, Gson 라이브러리를 이용해 JSON 데이터를 파싱하여 객체 리스트로 저장하였습니다.
-~~~java
+
+```java
 Type videoListType = new TypeToken<ArrayList<Video>>() {}.getType();
 private List<Video> list;
 
@@ -70,11 +72,13 @@ try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputS
 } catch (Exception e) {
 
 }
-~~~
+```
+
 #### Singleton
 
 클래스를 재사용할때 여러번 new하여 불필요한 객체들을 무분별하게 생성하는 것을 막기위해 싱글톤으로 영상관리 객체와 영상리뷰관리 객체를 생성하였습니다.
-~~~java
+
+```java
 private static VideoDaoImpl instance;
 private VideoDaoImpl() {}
 
@@ -95,7 +99,7 @@ public static VideoReviewDaoImpl getInstance() {
 	}
 	return instance;
 }
-~~~
+```
 
 #### 비디오 리뷰 추가 기능
 
@@ -164,6 +168,7 @@ public boolean removeReview(int videoNo, String nickName, int reviewNo) {
 이를 통해 비디오와 리뷰 간의 관계를 명확히 하고, 리뷰 데이터를 체계적으로 관리합니다.
 
 #### Setter
+
 ```java
 public void setNickName(String nickName) {
 	if (nickName == null || nickName.isEmpty()) {
@@ -177,6 +182,7 @@ public void setNickName(String nickName) {
 	this.nickName = nickName;
 }
 ```
+
 setter에는 유효성 검사를 통해 입력받는 데이터의 값을 관리하였습니다.
 
 <br>
