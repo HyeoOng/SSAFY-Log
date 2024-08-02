@@ -37,11 +37,15 @@ public class VideoReview {
 	}
 
 	public void setNickName(String nickName) {
-		if(nickName == null) {
-			// nickName point 입력 예외처리 예정
-		}else{
-		this.nickName = nickName;
+		if (nickName == null || nickName.isEmpty()) {
+			throw new IllegalArgumentException("닉네임은 null이거나 비어있을 수 없습니다.");
 		}
+
+		if (nickName.length() < 3 || nickName.length() > 20) {
+			throw new IllegalArgumentException("닉네임은 최소 2자 이상, 최대 20자 이하로 작성해주세요.");
+		}
+		
+		this.nickName = nickName;
 	}
 
 	public String getContent() {
