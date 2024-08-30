@@ -26,7 +26,7 @@
 
   - 최신 인기 운동 영상과 운동 부위별 영상 목록을 제공
   - JSON 데이터를 이용해 동적으로 비디오 정보를 로드
-    <img src="./data/readme/윤셔PJT.png" width="60%"/>
+    <img src="./data/readme/윤셔PJT.PNG" width="60%"/>
 
 - **운동 영상 리뷰 관리 페이지**
   - **리뷰 목록**: 등록된 모든 리뷰를 테이블 형식으로 제공
@@ -34,16 +34,16 @@
   - **리뷰 등록**: 새로운 리뷰를 작성할 수 있는 폼 제공
   - **리뷰 수정**: 기존 리뷰를 편집할 수 있는 기능 제공
   - **리뷰 삭제**: 선택된 리뷰를 삭제
-    <img src="./data/readme/reviewPage.png" width="60%"/>
-    <img src="./data/readme/reviewPage2.png" width="60%"/>
+    <img src="./data/readme/reviewPage.PNG" width="60%"/>
+    <img src="./data/readme/reviewPage2.PNG" width="60%"/>
 
 ### 2. 추가 기능
 
 - **회원 관리**
   - **회원가입 페이지**: 사용자 회원가입 폼 제공
   - **로그인 페이지**: 사용자 로그인 폼 제공
-    <img src="./data/readme/signupPage.png" width="60%"/>
-    <img src="./data/readme/loginPage.png" width="60%"/>
+    <img src="./data/readme/signupPage.PNG" width="60%"/>
+    <img src="./data/readme/loginPage.PNG" width="60%"/>
 
 ## 프로젝트 구조
 
