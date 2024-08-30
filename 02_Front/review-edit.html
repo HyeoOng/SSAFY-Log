@@ -7,50 +7,49 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 네비게이션 바 (index.html과 동일) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">SSAFIT</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="review.html">Reviews</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="signup.html">Sign Up</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login.html">Login</a>
-                    </li>
-                </ul>
-            </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">SSAFIT</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">홈</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="review.html">리뷰 목록</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">회원가입</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">로그인</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- 리뷰 수정 폼 -->
     <div class="container mt-5">
-        <h2>Edit Review</h2>
+        <h2>리뷰 수정하기</h2>
         <form>
             <div class="mb-3">
-                <label for="videoTitle" class="form-label">Video Title</label>
-                <input type="text" class="form-control" id="videoTitle" value="Yoga for Beginners" readonly>
+                <label for="videoTitle" class="form-label">영상 제목</label>
+                <input type="text" class="form-control" id="videoTitle" value="하루 15분! 전신 불태우는 다이어트 운동" readonly>
             </div>
             <div class="mb-3">
-                <label for="reviewerName" class="form-label">Reviewer</label>
-                <input type="text" class="form-control" id="reviewerName" value="John Doe" readonly>
+                <label for="reviewerName" class="form-label">리뷰 작성자</label>
+                <input type="text" class="form-control" id="reviewerName" value="김윤서" readonly>
             </div>
             <div class="mb-3">
-                <label for="reviewText" class="form-label">Review</label>
-                <textarea class="form-control" id="reviewText" rows="4">This video is very helpful for beginners to start yoga. The instructor is clear and the pace is perfect.</textarea>
+                <label for="reviewText" class="form-label">리뷰 내용</label>
+                <textarea class="form-control" id="reviewText" rows="4">체육부장 나혜원님의 추천을 받아 영상을 접하게 되었는데 참 유익하네요.</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Update Review</button>
-            <a href="review.html" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary">리뷰 수정하기</button>
+            <a href="review.html" class="btn btn-secondary">취소</a>
         </form>
     </div>
 
