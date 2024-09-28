@@ -57,14 +57,21 @@ public class MovieRepositoryImpl implements MovieRepository{
 	}
 
 	@Override
-	public void updateMovie(Movie movie) {
-		int id = movie.getId();
+	public void updateMovie(int id, Movie movie) {
 		for(int i=0; i<list.size(); i++) {
-			if(movie.getId()==id) {
+			Movie m = list.get(i);
+			if(m.getId()==id) {
 				list.set(i, movie);
 				return;
 			}
 		}
+//		int id = movie.getId();
+//		for(int i=0; i<list.size(); i++) {
+//			if(movie.getId()==id) {
+//				list.set(i, movie);
+//				return;
+//			}
+//		}
 		
 	}
 

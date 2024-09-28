@@ -21,5 +21,5 @@ public interface MovieRepository {
 	public abstract void insertMovie(Movie movie);
 	
 	// 영화 정보 수정(update movie set..)
-	public abstract void updateMovie(Movie movie);
+	public abstract void updateMovie(int id, Movie movie);
 }

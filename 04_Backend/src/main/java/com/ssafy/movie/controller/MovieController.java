@@ -91,7 +91,7 @@ public class MovieController extends HttpServlet {
 		Movie movie = new Movie(title, director, runningTime, genre, desc,openDate, posterUrl);
 		movie.setId(id);
 		
-		service.modifyMovie(movie);
+		service.modifyMovie(id, movie);
 		
 		req.setAttribute("movie", movie);
 		
@@ -102,8 +102,10 @@ public class MovieController extends HttpServlet {
 	private void doUpdateForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String title = req.getParameter("title");
 		Movie movie = service.getMovie(title);
+		int id = movie.getId();
 		
 		req.setAttribute("movie", movie);
+		req.setAttribute("id", id);
 		req.getRequestDispatcher("/WEB-INF/movie/updateForm.jsp").forward(req, resp);
 		
 	}

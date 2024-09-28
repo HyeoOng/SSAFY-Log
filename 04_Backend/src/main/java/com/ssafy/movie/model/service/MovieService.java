@@ -18,7 +18,7 @@ public interface MovieService {
 	public abstract void removeMovie(String title);
 	
 	// title인 영화 정보 수정
-	public abstract void modifyMovie(Movie movie);
+	public abstract void modifyMovie(int id, Movie movie);
 	
 	// 영화 정보 등록
 	public abstract void registMovie(Movie movie);
