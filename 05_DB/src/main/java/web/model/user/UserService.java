@@ -1,5 +1,10 @@
 package web.model.user;
 
-public class UserService {
-
+public interface UserService {
+	
+	
+	
+	public User login(String userId, String pw);
+	
+	public User login(User user);
 }

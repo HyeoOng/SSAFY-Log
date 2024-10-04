@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.login {
+	width: 500px;
+	margin: 200px auto;
+	text-align: center;
+}
+
+#loginBtn {
+	padding: 8px 13px;
+	background-color: royalblue;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+#loginBtn:hover {
+	background-color: rgb(40, 70, 190);
+}
+</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<a href="/post?action=sign-in" class="sign-in" name="action" value="sign-in">로그인</a>
-
+	<div class="login">
+		<h1>로그인 페이지</h1>
+		<hr>
+		<span id="loginSpan">
+			<p>ID: <input id="id" /></p>
+            <p>PW: <input id="pw" /></p>
+			<button id="loginBtn">로그인 하기</button>
+		</span>
+	</div>
+	<script src="index.js"></script>
 </body>
 </html>
