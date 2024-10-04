@@ -1,5 +1,5 @@
 // 페이지 로드 시 서버에서 데이터를 가져옵니다!
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     fetch('/post')  // 서버의 엔드포인트 URL
         .then(response => response.json())
         .then(posts => {
