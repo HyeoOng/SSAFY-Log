@@ -20,6 +20,9 @@ public class DBUtil {
 	private final String username = "root";
 	// 위 USER의 PASSWORD
 	private final String password = "179354682ek";
+//	private final String username = "ssafy";
+//	// 위 USER의 PASSWORD
+//	private final String password = "ssafy";
 	// Mysql 드라이버 클래스 이름
 	private final String driverName = "com.mysql.cj.jdbc.Driver";
 

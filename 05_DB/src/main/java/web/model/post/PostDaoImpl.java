@@ -40,6 +40,7 @@ public class PostDaoImpl implements PostDao{
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				post = new Post();
 				post.setPostId(rs.getInt(1));
 				post.setUserId(rs.getString(2));
 				post.setDate(rs.getString(3));

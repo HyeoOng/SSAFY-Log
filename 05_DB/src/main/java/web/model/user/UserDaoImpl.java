@@ -37,12 +37,14 @@ public class UserDaoImpl implements UserDao{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<Post> postList = new ArrayList<>();
+		// List<Post> postList = new ArrayList<>();
 		User user = null;
 		
-		String sql ="SELECT * FROM SSAFY_STUDY.user WHERE id=? AND PW=?";
+		String sql ="SELECT * FROM user WHERE userId=? AND pw=?";
 		
 		try {
+			conn = util.getConnection();
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
 			pstmt.setString(2, pw);
@@ -50,6 +52,7 @@ public class UserDaoImpl implements UserDao{
 			rs = pstmt.executeQuery();
 			
 			if (rs.next()) {
+				user = new User();
 				user.setName(rs.getString("name"));
 				user.setUserId(rs.getString("userId"));
 				user.setPw(rs.getString("pw"));
