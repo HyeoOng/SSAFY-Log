@@ -1,11 +1,22 @@
 // 페이지 로드 시 서버에서 데이터를 가져옵니다!
 document.addEventListener('DOMContentLoaded', async function() {
-    fetch('/post')  // 서버의 엔드포인트 URL
-        .then(response => response.json())
-        .then(posts => {
-            displayPosts(posts);
-        })
-        .catch(error => console.error('Error:', error));
+	// const name = getQueryParam('name'); // URL에서 name 파라미터 추출
+    let data = { sign: 'listload', name}; // name을 포함한 데이터 객체 생성
+	data = JSON.stringify(data);
+	
+    let response = await fetch('post', {method: "POST", body:data});  // 서버의 엔드포인트 URL
+	
+	let result = await response.json();
+	console.log(result);
+	
+	if(result.posts){
+		console.log("데이터 불러오기 성공");
+		displayPosts(result.posts);
+	}else{
+		const postModal = document.getElementById('postModal');
+		postModal.innerHTML = result.msg;
+	}
+
 });
 
 const postGrid = document.getElementById('postGrid');

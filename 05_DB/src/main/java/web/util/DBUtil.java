@@ -17,12 +17,12 @@ public class DBUtil {
 	// DB와 연결하기위해 필요한 DB의 URL
 	private final String url = "jdbc:mysql://localhost:3306/SSAFY_STUDY?serverTimezone=UTC";
 	// DB의 USER 이름
-	private final String username = "root";
-	// 위 USER의 PASSWORD
-	private final String password = "179354682ek";
-//	private final String username = "ssafy";
+//	private final String username = "root";
 //	// 위 USER의 PASSWORD
-//	private final String password = "ssafy";
+//	private final String password = "179354682ek";
+	private final String username = "ssafy";
+	// 위 USER의 PASSWORD
+	private final String password = "ssafy";
 	// Mysql 드라이버 클래스 이름
 	private final String driverName = "com.mysql.cj.jdbc.Driver";
 
