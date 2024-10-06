@@ -96,6 +96,7 @@
         └─classes
 ```
 ## ⭐️ DB 설계
+![erd](/uploads/baca23b189517eda05db7550ccf37e90/erd.png)<br />
 
 **Table : `user`**
 
