@@ -2,6 +2,8 @@ package web.model.post;
 
 import java.util.List;
 
+import web.model.user.Study;
+
 public class PostServiceImpl implements PostService{
 
 	private static PostService service = new PostServiceImpl();
@@ -26,8 +28,8 @@ public class PostServiceImpl implements PostService{
 	}
 
 	@Override
-	public List<Post> getPostByDate(String date) {
-		return dao.selectDate(date);
+	public List<Post> getPostByDate(int study) {
+		return dao.selectDate(study);
 	}
 
 	@Override
@@ -43,6 +45,11 @@ public class PostServiceImpl implements PostService{
 	@Override
 	public void removePost(int postId) {
 		dao.deletePost(postId);
+	}
+
+	@Override
+	public List<Study> getStudyName(String userId) {
+		return dao.selectStudyName(userId);
 	}
 
 }

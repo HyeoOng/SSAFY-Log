@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import web.model.user.Study;
 import web.util.DBUtil;
 
 public class PostDaoImpl implements PostDao{
@@ -43,10 +44,11 @@ public class PostDaoImpl implements PostDao{
 				post = new Post();
 				post.setPostId(rs.getInt(1));
 				post.setUserId(rs.getString(2));
-				post.setDate(rs.getString(3));
-				post.setProblemNumber(rs.getString(4));
-				post.setCode(rs.getString(5));
-				post.setContent(rs.getString(6));
+				post.setStudy(rs.getInt(3));
+				post.setDate(rs.getString(4));
+				post.setProblemNumber(rs.getString(5));
+				post.setCode(rs.getString(6));
+				post.setContent(rs.getString(7));
 				
 				postList.add(post);
 			}
@@ -65,7 +67,7 @@ public class PostDaoImpl implements PostDao{
 		Connection conn = null;
         PreparedStatement pstmt = null;
 
-        String sql = "INSERT INTO post VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO post VALUES(?,?,?,?,?,?)";
 
         try {
             conn = util.getConnection();
@@ -74,9 +76,10 @@ public class PostDaoImpl implements PostDao{
 
             pstmt.setString(1, post.getUserId());
             pstmt.setString(2, post.getDate());
-            pstmt.setString(3, post.getProblemNumber());
-            pstmt.setString(4, post.getCode());
-            pstmt.setString(5, post.getContent());
+            pstmt.setInt(3, post.getStudy());
+            pstmt.setString(4, post.getProblemNumber());
+            pstmt.setString(5, post.getCode());
+            pstmt.setString(6, post.getContent());
 
             int result = pstmt.executeUpdate();
 
@@ -148,28 +151,41 @@ public class PostDaoImpl implements PostDao{
 	}
 
 	@Override
-	public List<Post> selectDate(String userId) {
+	public List<Post> selectDate(int study) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Post> postList = new ArrayList<>();
 		Post post = null;
 		
+		// 각 유저별 가장 최근 등록된 게시글 정보를 가지고 온다.
+		String sql = "SELECT postid, userid, study, date, problemNumber, code, content, name\r\n"
+				+ "FROM (\r\n"
+				+ "    SELECT post.postId, post.userId, post.date, post.study, post.problemNumber, post.code, post.content , user.name as name,\r\n"
+				+ "           ROW_NUMBER() OVER (PARTITION BY userId ORDER BY date DESC) as rn\r\n"
+				+ "    FROM post left join user on post.userid = user.userid\r\n"
+				+ "    WHERE post.study = ?\r\n"
+				+ ") sub \r\n"
+				+ "WHERE rn = 1;";
+		
 		try {
 			conn = util.getConnection();
 			
-			String sql = "SELECT * FROM Post WHRER userId = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setInt(1, study);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
+				post = new Post();
+				
 				post.setPostId(rs.getInt(1));
 				post.setUserId(rs.getString(2));
-				post.setDate(rs.getString(3));
-				post.setProblemNumber(rs.getString(4));
-				post.setCode(rs.getString(5));
-				post.setContent(rs.getString(6));
+				post.setStudy(rs.getInt(3));
+				post.setDate(rs.getString(4));
+				post.setProblemNumber(rs.getString(5));
+				post.setCode(rs.getString(6));
+				post.setContent(rs.getString(7));
+				post.setName(rs.getString(8));
 				
 				postList.add(post);
 			}
@@ -202,10 +218,11 @@ public class PostDaoImpl implements PostDao{
 			if(rs.next()) {
 				post.setPostId(rs.getInt(1));
 				post.setUserId(rs.getString(2));
-				post.setDate(rs.getString(3));
-				post.setProblemNumber(rs.getString(4));
-				post.setCode(rs.getString(5));
-				post.setContent(rs.getString(6));
+				post.setStudy(rs.getInt(3));
+				post.setDate(rs.getString(4));
+				post.setProblemNumber(rs.getString(5));
+				post.setCode(rs.getString(6));
+				post.setContent(rs.getString(7));
 			}
 			
 		}catch (Exception e) {
@@ -215,6 +232,39 @@ public class PostDaoImpl implements PostDao{
 		}
 		// TODO Auto-generated method stub
 		return post;
+	}
+
+	@Override
+	public List<Study> selectStudyName(String userId) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Study> studyNameList = new ArrayList<>();
+		Study study;
+		
+		String sql = "select * from study where study in (select study from studyMember where userId = ?)";
+		
+		try {
+			conn = util.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				study = new Study();
+				study.setStudy(rs.getString(1));
+				study.setStudyName(rs.getString(2));
+				studyNameList.add(study);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			util.close(rs, pstmt, conn);
+		}
+
+		return studyNameList;
 	}
 
 }

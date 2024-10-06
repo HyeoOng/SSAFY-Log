@@ -11,11 +11,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import web.model.post.PostService;
 import web.model.post.PostServiceImpl;
+import web.model.user.Study;
 import web.model.user.User;
 
 import java.util.*;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -49,10 +51,55 @@ public class PostServlet extends HttpServlet{
 		case "listload":
 			doListLoad(request, response);
 			break;
+		case "studyload":
+			doStudyLoad(request, response);
+			break;
+		case "studyFirstPostLoad":
+			int studyId = Integer.parseInt(json.get("studyId").getAsString());
+			
+			request.setAttribute("studyId", studyId);
+			doStudyFirstPostLoad(request, response);
 		}
 		
 	}
 	
+	private void doStudyFirstPostLoad(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		int studyId = (Integer)request.getAttribute("studyId");
+		
+		List<Post> studyMembers = service.getPostByDate(studyId);
+		
+		Gson gson = new Gson();
+		JsonObject retJson = new JsonObject();
+		
+		retJson.add("studyMembers", gson.toJsonTree(studyMembers));
+		out.append(retJson.toString());
+		out.close();
+	}
+
+	private void doStudyLoad(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute("user"); // 로그인 시 설정한 세션에서 로그인된 객체 가져오기
+		
+		List<Study> studyNameList = service.getStudyName(user.getUserId());
+		
+		Gson gson = new Gson();
+		JsonObject retJson = new JsonObject();
+		
+		retJson.addProperty("name", user.getName());
+		
+		if(studyNameList.size()>0) {
+			retJson.add("studies", gson.toJsonTree(studyNameList));
+		} else {
+			retJson.addProperty("msg", "등록된 스터디가 존재하지 않습니다.");
+		}
+		
+		out.append(retJson.toString());
+		out.close();
+	}
+
 	private void doListLoad(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		

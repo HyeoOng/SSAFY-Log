@@ -4,9 +4,11 @@ import java.io.Serializable;
 
 public class Post implements Serializable{
 	
-	private int postId;
+	private int postId, study;
 	private String userId, date, problemNumber, code, content;
 	private int n = 1;
+	
+	private String name;
 	
 	
 	public Post() {
@@ -15,11 +17,12 @@ public class Post implements Serializable{
 	}
 
 
-	public Post(String userId, String date, String problemNumber, String code, String content) {
+	public Post(String userId, String date, int study, String problemNumber, String code, String content) {
 		super();
 		this.postId = n++;
 		this.userId = userId;
 		this.date = date;
+		this.study = study;
 		this.problemNumber = problemNumber;
 		this.code = code;
 		this.content = content;
@@ -83,6 +86,24 @@ public class Post implements Serializable{
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getStudy() {
+		return study;
+	}
+
+
+	public void setStudy(int study) {
+		this.study = study;
 	}
 
 

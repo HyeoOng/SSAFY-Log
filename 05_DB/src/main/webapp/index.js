@@ -12,7 +12,7 @@ loginBtn.addEventListener("click", async function(){
 	console.log(data);
 	
 	if(data.name){
-		window.location.href = `post.html?name=${encodeURIComponent(data.name)}`;
+		window.location.href = `mypage.html`;
 	}else{
 		alert(data.msg);
 	}
