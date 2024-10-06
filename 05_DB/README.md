@@ -190,7 +190,7 @@
 전체 게시글 버튼을 클릭하면 모든 작성자가 등록한 글을 확인할 수 있습니다.<br/>
 ![image](/uploads/73145d67b6d79fdbcb8dc466833ddb5b/image.png)<br/>
 글을 클릭하면 등록된 게시글의 자세한 내용을 확인할 수 있습니다.<br>
-![image](/uploads/190e3eae98f507c7767b63b53e3bc55a/image.png)
+![스크린샷_2024-10-07_022751](/uploads/14d8b7059f37fcdd8eec6bcb2831e1aa/스크린샷_2024-10-07_022751.png)
 			
 				
 
