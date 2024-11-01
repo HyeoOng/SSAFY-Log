@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.exam.model.dao.MemberDao">
+	<insert id="insertMember" parameterType="Member">
+		INSERT INTO member(email,password,name,role) value (#{email},#{password},#{name},#{role})
+	</insert>
+	<select id="login" parameterType="Member" resultType="Member">
+		select * from member where email = #{email} and password=#{password}
+	</select>
+	<select id="selectMemberByEmail" parameterType="String" resultType="Member">
+		select * from member where email = #{email}
+	</select>
+	<update id="updateMember" parameterType="Member">
+		UPDATE member
+		SET password=#{password}, name = #{name}, updatedAt = CURRENT_TIMESTAMP
+		WHERE email = #{email}
+	</update>
+	<delete id="deleteMember" parameterType="String">
+		delete from member where email = #{email}
+	</delete>
+	
+	<!-- 보안 문자열 관련 SQL -->
+	<insert id="insertMemberSalt" parameterType="map">
+	    INSERT INTO member_salt (email, salt)
+	    VALUE (#{email}, #{salt})
+	</insert>
+
+	<select id="seletMemberSaltByEmail" parameterType="String">
+		select salt from member_salt where email = #{email}
+	</select>
+</mapper>
