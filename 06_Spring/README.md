@@ -40,19 +40,38 @@
 src/
 ├── main/
 │   ├── java/
-│   │   └── com.ssafy.mvc/
-│   │       ├── config/ - 설정 파일, e.g., `WebConfig.java`
-│   │       ├── controller/ - 컨트롤러, e.g., `HomeController.java`
-│   │       ├── interceptor/ - 커스텀 인터셉터, e.g., `CustomInterceptor.java`
-│   │       ├── model/ - 데이터 모델, e.g., `Member.java`
-│   │       └── repository/ - JPA 리포지토리, e.g., `MemberRepository.java`
+│   │   └── com.ssafy.exam/
+│   │       ├── config/ - 설정 파일
+│   │       │   ├── LoginCounter.java - 로그인 카운터 설정 클래스
+│   │       │   ├── MyBatisConfig.java - MyBatis 설정 클래스
+│   │       │   └── SwaggerConfig.java - Swagger 설정 클래스
+│   │       ├── controller/ - 컨트롤러 클래스
+│   │       │   ├── AIDoctorController.java - AI 의사 관련 API 컨트롤러
+│   │       │   ├── DoctorRestController.java - 의사 관련 REST API 컨트롤러
+│   │       │   ├── MemberController.java - 사용자 관련 API 컨트롤러
+│   │       │   └── SpecialtyRestController.java - 전문 분야 관련 REST API 컨트롤러
+│   │       ├── model/
+│   │       │   ├── dao/ - 데이터 접근 계층 (DAO)
+│   │       │   │   ├── DoctorDao.java - 의사 데이터 접근 객체
+│   │       │   │   ├── MemberDao.java - 사용자 데이터 접근 객체
+│   │       │   │   └── SpecialtyDao.java - 전문 분야 데이터 접근 객체
+│   │       │   └── dto/ - 데이터 전송 객체 (DTO)
+│   │       │       ├── AiDoctor.java - AI 의사 DTO 클래스
+│   │       │       ├── Doctor.java - 의사 DTO 클래스
+│   │       │       ├── Member.java - 사용자 DTO 클래스
+│   │       │       └── Specialty.java - 전문 분야 DTO 클래스
+│   │       ├── service/ - 비즈니스 로직 계층
+│   │       │   ├── DoctorService.java - 의사 관련 서비스 인터페이스
+│   │       │   ├── DoctorServiceImpl.java - 의사 관련 서비스 구현 클래스
+│   │       │   ├── MemberService.java - 사용자 관련 서비스 인터페이스
+│   │       │   ├── MemberServiceImpl.java - 사용자 관련 서비스 구현 클래스
+│   │       │   ├── SpecialtyService.java - 전문 분야 관련 서비스 인터페이스
+│   │       │   └── SpecialtyServiceImpl.java - 전문 분야 관련 서비스 구현 클래스
+│   │       └── util/ - 유틸리티 클래스
+│   │           └── OpenCrypt.java - 암호화 관련 유틸리티 클래스
 │   ├── resources/
-│   │   ├── static/ - 정적 파일 (CSS, JS 등)
-│   │   ├── templates/ - Thymeleaf 템플릿, e.g., `home.html`
-│   │   └── application.properties - 애플리케이션 설정
-├── test/ - 단위 및 통합 테스트
-└── pom.xml - Maven 설정 파일
-
+│   │   └── application.properties - 애플리케이션 설정 파일
+└── SpringAiProjectApplication.java - Spring Boot 애플리케이션 메인 클래스
 ```
 
 ## ⭐️ 주요 기능 
